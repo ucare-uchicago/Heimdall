@@ -22,7 +22,7 @@ Please refer to [<u>**Document**</u>](./documentation/Experiments.md) here. This
 
 ## Cite our Paper
 
-Please consider citing our paper at XXX-conference 2024. The bib entry is:
+Please consider citing our paper at EuroSys'25. The bib entry is:
 
 ```bash
 
