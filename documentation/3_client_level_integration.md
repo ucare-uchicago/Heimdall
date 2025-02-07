@@ -18,6 +18,7 @@
 + **Traces Clarification:** For our evaluation in paper, we conduct large-scale experiments on hundreds of various and random real-world traces. However, those traces are both too large (around 13 TB) and too time-consuming (takes several days to run, even in parallel way) to be included in the artifact. Therefore, we randomly include 5 of them in artifact just for quick evaluation.
 
 + **Code:** Code related to this experiment is included in directory: `Heimdall/integration/client-level`.
++ **Dataset:** Please download [the dataset](https://drive.google.com/drive/folders/1SpkFkKdi4UbqQC00SWV6T-jejJhT-NVa?usp=sharing) and place under `integration/client-level/data/`
 + **Experiment Duration:** 90 minutes (only replaying) + 120 minutes (training flashnet and linnos at same time)
 + **Recommended Testbed:** [Chameleon](https://www.chameleoncloud.org/) `storage_hierarchy` node under [CHI@TACC](https://chi.tacc.chameleoncloud.org/project/leases/). 
 
