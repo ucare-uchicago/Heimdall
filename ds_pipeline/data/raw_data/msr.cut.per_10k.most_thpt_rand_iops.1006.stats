@@ -1,0 +1,41 @@
+Raw trace path  = /mnt/extra/flashnet-integration/data/trace_raw/msr.cut.per_10k.most_thpt_rand_iops.1006/original.trace
+=================================================
+Total IO    = 10000  =  10.0 k
+Duration    = 1.0 s = 1 mins
+R:W ratio   = 83/17
+#read io    = 8316  =  8.3 k
+#write io   = 1684  =  1.7 k
+IOPS (ALL IO)      = 10000.0 IO/s
+IOPS (read IO)     = 8316.0 IO/s
+IOPS (write IO)    = 1684.0 IO/s
+Size (ALL IO)      = 124 MB
+Size (read IO)     = 33 MB
+Size (write IO)    = 90 MB
+=================================================
+Average IOPS (binned per 100) = 29057.0 IO/s
+Average throughput (binned per 100) = 183.0 MB/s
+Throughput P75 (binned per 100) = 156.0 MB/s
+Throughput P80 (binned per 100) = 156.0 MB/s
+Throughput P90 (binned per 100) = 156.0 MB/s
+=================================================
+Raw IO size AVERAGE = 12.71 KB
+Raw IO size p50 = 4.0 KB
+Raw IO size p70 = 4.0 KB
+Raw IO size p90 = 60.0 KB
+Raw IO size p95 = 64.0 KB
+Raw IO size p100 = 64 KB
+=================================================
+Read IO size AVERAGE = 4.18 KB
+Read IO size p50 = 4.0 KB
+Read IO size p70 = 4.0 KB
+Read IO size p90 = 4.0 KB
+Read IO size p95 = 4.0 KB
+Read IO size p100 = 64 KB
+=================================================
+Write IO size AVERAGE = 54.87 KB
+Write IO size p50 = 60.0 KB
+Write IO size p70 = 64.0 KB
+Write IO size p90 = 64.0 KB
+Write IO size p95 = 64.0 KB
+Write IO size p100 = 64 KB
+=================================================

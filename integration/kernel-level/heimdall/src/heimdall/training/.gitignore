@@ -1,0 +1,5 @@
+mlData
+mlData/*
+weights_header_2ssds
+weights_header_2ssds/*
+training_results.txt

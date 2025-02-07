@@ -1,0 +1,54 @@
+[submodule "integration/app-level/ceph-object-corpus"]
+	path = integration/app-level/ceph-object-corpus
+	url = https://github.com/ceph/ceph-object-corpus.git
+[submodule "integration/app-level/src/civetweb"]
+	path = integration/app-level/src/civetweb
+	url = https://github.com/ceph/civetweb
+[submodule "integration/app-level/src/erasure-code/jerasure/jerasure"]
+	path = integration/app-level/src/erasure-code/jerasure/jerasure
+	url = https://github.com/ceph/jerasure.git
+	branch = v2-ceph
+[submodule "integration/app-level/src/erasure-code/jerasure/gf-complete"]
+	path = integration/app-level/src/erasure-code/jerasure/gf-complete
+	url = https://github.com/ceph/gf-complete.git
+	branch = v3-ceph
+[submodule "integration/app-level/src/rocksdb"]
+	path = integration/app-level/src/rocksdb
+	url = https://github.com/ceph/rocksdb
+	ignore = dirty
+[submodule "integration/app-level/ceph-erasure-code-corpus"]
+	path = integration/app-level/ceph-erasure-code-corpus
+	url = https://github.com/ceph/ceph-erasure-code-corpus.git
+[submodule "integration/app-level/src/googletest"]
+	path = integration/app-level/src/googletest
+	url = https://github.com/ceph/googletest
+	branch = ceph-release-1.7.x
+[submodule "integration/app-level/src/spdk"]
+	path = integration/app-level/src/spdk
+	url = https://github.com/ceph/spdk.git
+[submodule "integration/app-level/src/xxHash"]
+	path = integration/app-level/src/xxHash
+	url = https://github.com/ceph/xxHash.git
+[submodule "integration/app-level/src/isa-l"]
+	path = integration/app-level/src/isa-l
+	url = https://github.com/ceph/isa-l
+[submodule "integration/app-level/src/lua"]
+	path = integration/app-level/src/lua
+	url = https://github.com/ceph/lua.git
+	branch = lua-5.3-ceph
+	ignore = dirty
+[submodule "integration/app-level/src/dpdk"]
+	path = integration/app-level/src/dpdk
+	url = https://github.com/ceph/dpdk
+[submodule "integration/app-level/src/zstd"]
+	path = integration/app-level/src/zstd
+	url = https://github.com/facebook/zstd
+[submodule "integration/app-level/src/crypto/isa-l/isa-l_crypto"]
+	path = integration/app-level/src/crypto/isa-l/isa-l_crypto
+	url = https://github.com/01org/isa-l_crypto
+[submodule "integration/app-level/src/blkin"]
+	path = integration/app-level/src/blkin
+	url = https://github.com/ceph/blkin
+[submodule "integration/app-level/src/rapidjson"]
+	path = integration/app-level/src/rapidjson
+	url = https://github.com/ceph/rapidjson
