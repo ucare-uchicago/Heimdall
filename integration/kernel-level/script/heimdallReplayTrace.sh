@@ -129,6 +129,8 @@ echo -e "${green}✔ Make heimdall done. ${reset}"
 
 
 # ===================================== 3. Replay traces ============================================
+
+# 0. Warmup heimdall (FixMe in the future, this is not a good way to make it general works on machines)
 cd $HEIMDALL_KERNEL/heimdall/src/kapi
 
 sudo ./load.sh > load.log 2>&1 &
@@ -150,10 +152,40 @@ cd $HEIMDALL_KERNEL/heimdall/src/heimdall/kernel_hook
 ./enable_heimdall.sh
 echo -e "${green}✔ Enable heimdall. ${reset}"
 
-# 1. Run heimdall
 cd $HEIMDALL_KERNEL/heimdall/src/heimdall/io_replayer
 echo "Replaying traces with the help of heimdall..."
-./run_2ssds.sh heimdall $TRACE_TO_SSD_DEVICE0 $TRACE_TO_SSD_DEVICE1 $SSD_DEVICE0 $SSD_DEVICE1
+./run_2ssds.sh heimdall $TRACE_TO_SSD_DEVICE0 $TRACE_TO_SSD_DEVICE1 $SSD_DEVICE0 $SSD_DEVICE1 1
+echo -e "${green}✔ Replaying traces with heimdall done. ${reset}"
+
+cd $HEIMDALL_KERNEL/heimdall/src/heimdall/kernel_hook
+./disable_heimdall.sh
+echo -e "${green}✔ Disable heimdall. ${reset}"
+
+# 1. Run heimdall
+cd $HEIMDALL_KERNEL/heimdall/src/kapi
+
+sudo ./load.sh > load.log 2>&1 &
+PID=$!
+
+# Give the process some time to start up and log initial messages
+sleep 4
+
+if grep -q "Error" load.log; then
+    echo -e "${red}✘ Error: detected startup error in load.sh ${reset}"
+    kill $PID
+    exit 1
+else
+    rm -rf load.log
+fi
+echo -e "${green}✔ Modules Inserted. ${reset}"
+
+cd $HEIMDALL_KERNEL/heimdall/src/heimdall/kernel_hook
+./enable_heimdall.sh
+echo -e "${green}✔ Enable heimdall. ${reset}"
+
+cd $HEIMDALL_KERNEL/heimdall/src/heimdall/io_replayer
+echo "Replaying traces with the help of heimdall..."
+./run_2ssds.sh heimdall $TRACE_TO_SSD_DEVICE0 $TRACE_TO_SSD_DEVICE1 $SSD_DEVICE0 $SSD_DEVICE1 0
 echo -e "${green}✔ Replaying traces with heimdall done. ${reset}"
 
 cd $HEIMDALL_KERNEL/heimdall/src/heimdall/kernel_hook
@@ -163,13 +195,13 @@ echo -e "${green}✔ Disable heimdall. ${reset}"
 # 2. Run baseline
 cd $HEIMDALL_KERNEL/heimdall/src/heimdall/io_replayer
 echo "Replaying traces (baseline)..."
-./run_2ssds.sh baseline $TRACE_TO_SSD_DEVICE0 $TRACE_TO_SSD_DEVICE1 $SSD_DEVICE0 $SSD_DEVICE1
+./run_2ssds.sh baseline $TRACE_TO_SSD_DEVICE0 $TRACE_TO_SSD_DEVICE1 $SSD_DEVICE0 $SSD_DEVICE1 0
 echo -e "${green}✔ Replaying traces(baseline) done. ${reset}"
 
 # 3. Run random
 cd $HEIMDALL_KERNEL/heimdall/src/heimdall/io_replayer
 echo "Replaying traces (random)..."
-./run_2ssds.sh random $TRACE_TO_SSD_DEVICE0 $TRACE_TO_SSD_DEVICE1 $SSD_DEVICE0 $SSD_DEVICE1
+./run_2ssds.sh random $TRACE_TO_SSD_DEVICE0 $TRACE_TO_SSD_DEVICE1 $SSD_DEVICE0 $SSD_DEVICE1 0
 echo -e "${green}✔ Replaying traces(random) done. ${reset}"
 
 # # store the replaying results

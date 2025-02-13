@@ -71,6 +71,9 @@ int main (int argc, char **argv)
         trace.parse_file(i, argv[5+i]);
     }
 
+    std::string is_warmup_string(argv[7]);
+    int is_warmup = std::stoi(is_warmup_string);
+
     DISKSZ = (int64_t*)malloc(n_devices_to_trace * sizeof(int64_t));
     
     pthread_barrier_t sync_barrier;
@@ -93,6 +96,7 @@ int main (int argc, char **argv)
             targs[dev][j].device = dev;
             targs[dev][j].sync_barrier = &sync_barrier;
             targs[dev][j].type = type;
+            targs[dev][j].is_warmup = is_warmup;
 
             if(type == "baseline")
                 targs[dev][j].executor = baseline_execute_op;
