@@ -123,9 +123,9 @@ void* replayer_fn(void* arg) {
     int device_num = 2;
 
     // is_warmup
-    if (is_warmup == 1) {
-        printf("Heimdall Warmup \n");    // TODO: fix me in the future
-    }
+    // if (is_warmup == 1) {
+    //     printf("Heimdall Warmup \n");    // TODO: fix me in the future
+    // }
 
     // to update main thread status
     std::shared_ptr<double> main_status = std::make_shared<double>(0);;
