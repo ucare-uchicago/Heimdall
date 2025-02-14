@@ -42,6 +42,7 @@ struct Thread_arg {
     pthread_barrier_t *sync_barrier;
     uint64_t start_ts;
     std::string type; 
+    int is_warmup;
 
     void (*executor)(TraceOp &trace_op, Trace *trace, uint32_t device, char* buf);
 };

@@ -25,6 +25,8 @@
 
 #define MAX_FAIL 1
 
+int is_warmup = 0;
+
 static int sleep_until(uint64_t next) {
     uint64_t now = get_ns_ts();
     int64_t diff = next - now;
@@ -77,7 +79,10 @@ void heimdall_execute_op(TraceOp &trace_op, Trace *trace, uint32_t device, char*
         }
     } else if(trace_op.op == 1) {
         trace->add_io_count(device);
-        ret = pwrite(fds[device], buf, trace_op.size, trace_op.offset);
+        if (is_warmup != 1) {  // formal replaying
+            ret = pwrite(fds[device], buf, trace_op.size, trace_op.offset);
+        }
+        // ret = pwrite(fds[device], buf, trace_op.size, 0);
     } else {
         printf("Wrong OP code! %d\n", trace_op.op);
     }
@@ -112,9 +117,15 @@ void* replayer_fn(void* arg) {
     Trace *trace = targ->trace;
     uint32_t device = targ->device;
     std::string type = targ->type;
+    is_warmup = targ->is_warmup; // TODO: fix me in the future (warm up is not an ugly way and didn't identify the true bug)
     TraceOp trace_op;
     char *buf;
     int device_num = 2;
+
+    // is_warmup
+    // if (is_warmup == 1) {
+    //     printf("Heimdall Warmup \n");    // TODO: fix me in the future
+    // }
 
     // to update main thread status
     std::shared_ptr<double> main_status = std::make_shared<double>(0);;

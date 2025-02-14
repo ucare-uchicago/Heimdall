@@ -61,8 +61,10 @@ sudo apt-get -y install build-essential tmux git pkg-config cmake zsh
 sudo apt-get -y install libncurses-dev gawk flex bison openssl libssl-dev dkms libelf-dev libiberty-dev autoconf zstd
 sudo apt-get -y install libreadline-dev binutils-dev libnl-3-dev
 sudo apt-get -y install ecryptfs-utils cpufrequtils
-sudo apt-get install dwarves
-sudo apt-get install nvidia-cuda-toolkit
+sudo apt-get -y install dwarves
+sudo apt-get -y install nvidia-cuda-toolkit
+sudo apt-get -y install python3-pip
+sudo apt-get -y install python3-numpy
 pip3 install --upgrade pip
 pip3 install numpy matplotlib scipy
 pip3 show numpy

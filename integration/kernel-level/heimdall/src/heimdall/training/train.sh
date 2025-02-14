@@ -25,7 +25,7 @@ echo $1, $2, $3, $4
 mkdir -p mlData
 
 make -C ../io_replayer
-sudo ../io_replayer/replayer baseline mlData/TrainTraceOutput 2 "${3}-${4}" $1 $2
+sudo ../io_replayer/replayer baseline mlData/TrainTraceOutput 2 "${3}-${4}" $1 $2 0
 
 
 for i in 0 1
